@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
 app.get('/search/:movie_id', (req, res) => {
     // Connection to database
     var db_con = mysql.createConnection({
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASSWD
+        host: "localhost",
+        user: "root",
+        password: "8wLE11Xf2h&9Xm"
       });
     // Query the database--
     movie = req.params.movie_id;
