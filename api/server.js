@@ -6,7 +6,7 @@ const app = express()
 
 // Home route, doesn't do anything
 app.get('/', (req, res) => {
-    res.send("No movies here....")
+    res.send("No movies here presently....")
 })
 
 // Route for querying
