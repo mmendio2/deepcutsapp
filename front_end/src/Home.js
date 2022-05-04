@@ -4,7 +4,7 @@ import logo from "./DeepCuts_Logo.png";
 import MovieData from "./movie_titles.json";
 import "./Home.css";
 
-
+// displays logo, text, and search bar
 function Home() {
 return(
     <div>

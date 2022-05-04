@@ -7,6 +7,7 @@ import Search from "./Search.js";
 import Home from "./Home.js"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
+// sets the webapge url for home page and redirects after a search
 function App() {
     return (
       <Router>

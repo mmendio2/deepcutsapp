@@ -2,7 +2,7 @@ var mysql = require('mysql2');
 var async = require("async");
 
 
-
+// tests the connection to the database
 var db_con = mysql.createConnection({
   host: "localhost",
   user: "root",
