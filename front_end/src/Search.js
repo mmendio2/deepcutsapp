@@ -28,7 +28,7 @@ function Search() {
         })  
  }, []);
 
- // sets the info based on the responses
+ // sets the info based on responses
   var index = -1
   var val = window.location.href.split('/').slice(-1)[0]
   var filteredObj = movie_data.find(function(item, i){
@@ -41,8 +41,7 @@ function Search() {
   const movie = movie_data[index]['title']
 
 
-  // when called, updates the current dispalyed movie
-
+  // when called, updates the currently dispalyed movie
   const updateMovie = () => {
     if (movieNum > movieRecs.length){
       setIndRecs("Out of movies :/");
@@ -56,7 +55,7 @@ function Search() {
     } 
   };
 
- // html dispaly, on click of button, shows the new movie.
+ // html dispaly, shows the new movie upon button click.
   return <div className="Search">
     <center>
         <h1 style={{fontSize: "3.7rem"}}>
