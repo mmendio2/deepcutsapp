@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "devStart": "nodemon server.js",
-    "start": "nodemon server.js",
+    "devStart": "node server.js",
+    "start": "node server.js",
     "serverStart": "node server.js"
   },
   "dependencies": {

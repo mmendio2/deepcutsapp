@@ -18,7 +18,7 @@ function Search() {
   var count = 0
   useEffect(() => {
     // gets the information the server sends
-    axios.get(`/search/${val}`).then(response => {
+    axios.get(`https://deepcuts-apps.herokuapp.com/search/${val}`).then(response => {
       console.log(response);
       setMovieRecs(response.data);
       setIndRecs(response.data[0][0])

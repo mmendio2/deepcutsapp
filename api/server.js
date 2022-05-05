@@ -13,13 +13,14 @@ app.get('/', (req, res) => {
 app.get('/search/:movie_id', (req, res) => {
     // Connection to database
     var db_con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "8wLE11Xf2h&9Xm"
+        host: "us-cdbr-east-05.cleardb.net",
+        user: "b17319eb0746e9",
+        password: "6c10b643c71d5e7 ",
+        database: "heroku_cfd51fbe1a7302a"
       });
     // Query the database--
     movie = req.params.movie_id;
-    query = `SELECT * from movies.movie_recs where movie_like = '${movie}' order by freq DESC`;
+    query = `SELECT * from ${database}.movie_recs where movie_like = '${movie}' order by freq DESC`;
 
     db_con.query(query, function(err, rows, fields)    {
         arraylength = rows.length
@@ -38,18 +39,18 @@ app.get('/search/:movie_id', (req, res) => {
                         (SELECT a.movie_id, freq
                         FROM
                         (SELECT movie_id, count(movie_id) as freq
-                        from movies.user_movies 
+                        from ${database}.user_movies 
                         WHERE user in
                         (SELECT user 
-                        FROM movies.user_movies
-                        WHERE movies.user_movies.movie_id = '${movie}' AND rating >= 4.5)
+                        FROM ${database}.user_movies
+                        WHERE ${database}.user_movies.movie_id = '${movie}' AND rating >= 4.5)
                         AND  rating >= 4.5 AND movie_id != '${movie}' 
                         GROUP BY movie_id) AS a 
                         WHERE
-                        (SELECT COUNT(1) FROM (SELECT genre_name FROM movies.genre_table WHERE movies.genre_table.movie_id = '${movie}' ) as cur
-                        LEFT OUTER JOIN (SELECT genre_name FROM movies.genre_table WHERE movies.genre_table.movie_id = a.movie_id ) AS cur2 ON cur.genre_name =cur2.genre_name
+                        (SELECT COUNT(1) FROM (SELECT genre_name FROM ${database}.genre_table WHERE ${database}.genre_table.movie_id = '${movie}' ) as cur
+                        LEFT OUTER JOIN (SELECT genre_name FROM ${database}.genre_table WHERE ${database}.genre_table.movie_id = a.movie_id ) AS cur2 ON cur.genre_name =cur2.genre_name
                         WHERE cur2.genre_name IS NULL) = 0) as b
-                        INNER JOIN movies.movie_table on b.movie_id = movie_table.movie_id
+                        INNER JOIN ${database}.movie_table on b.movie_id = movie_table.movie_id
                         ORDER BY freq DESC`
             db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
                 emp_arraylength = emp_rows.length
