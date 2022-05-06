@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/deepcuts/static/css/main.b91cb498.css",
+    "main.js": "/deepcuts/static/js/main.a3717473.js",
+    "static/js/787.8b157e44.chunk.js": "/deepcuts/static/js/787.8b157e44.chunk.js",
+    "index.html": "/deepcuts/index.html",
+    "main.b91cb498.css.map": "/deepcuts/static/css/main.b91cb498.css.map",
+    "main.a3717473.js.map": "/deepcuts/static/js/main.a3717473.js.map",
+    "787.8b157e44.chunk.js.map": "/deepcuts/static/js/787.8b157e44.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b91cb498.css",
+    "static/js/main.a3717473.js"
+  ]
+}
