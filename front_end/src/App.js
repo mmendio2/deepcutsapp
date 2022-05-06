@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+
 import Search from "./Search.js";
 import Home from "./Home.js"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
