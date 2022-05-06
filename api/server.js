@@ -4,10 +4,10 @@ require("dotenv").config();
 
 
 
-DATABASE = "heroku_cfd51fbe1a7302a";
+DATABASE = process.env.DB;
 
 const app = express()
-//cors
+//cors - THIS IS DEFINITELY NOT SAFE BUT IT WORKS *********MAYBE FIX**********
 const cors = require('cors');
 app.use(cors({
     origin: '*'
