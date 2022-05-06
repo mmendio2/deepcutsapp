@@ -1,8 +1,5 @@
 import React from "react";
 import "./App.css";
-import SearchBar from "./Components/SearchBar";
-import logo from "./DeepCuts_Logo.png";
-import MovieData from "./movie_titles.json";
 import Search from "./Search.js";
 import Home from "./Home.js"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -14,8 +11,8 @@ function App() {
         <div className="App">
             <div className = "content">
               <Routes>
-                <Route path ='/deepcutsapp' element={<Home/>}/> 
-                <Route path ='/deepcutsapp/*' element={<Search/>}/> 
+                <Route path ='/deepcuts' element={<Home/>}/> 
+                <Route path ='/deepcuts/*' element={<Search/>}/> 
               </Routes>
             </div>
         </div>
