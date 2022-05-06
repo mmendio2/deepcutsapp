@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import movie_data from './movie_titles.json'
 import axios from "axios"
 import "./Search.css";
-import { setNodeSourceCodeLocation } from 'parse5/lib/tree-adapters/default';
 
 
 function Search() {
