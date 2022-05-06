@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
 app.get('/search/:movie_id', (req, res) => {
     // Connection to database, uses CLEARDB login
     var db_con = mysql.createPool({
-        host: "us-cdbr-east-05.cleardb.net",
-        user: "b17319eb0746e9",
-        password: "6c10b643c71d5e7",
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD
       });
     // Query the database--
     movie = req.params.movie_id;
@@ -50,7 +50,6 @@ app.get('/search/:movie_id', (req, res) => {
 
     db_con.query(query, function(err, rows, fields)    {
         arraylength = rows.length
-        test = 'False'
         // if it can't get it from the indexed database, it does the slow query from the full database
         output = []
         console.log("CALL")
@@ -58,8 +57,6 @@ app.get('/search/:movie_id', (req, res) => {
             output.push([rows[i].rec_title, rows[i].rec_summary, rows[i].rec_rating, rows[i].rec_num_ratings, rows[i].rec_id])
         }
         if (arraylength != 0){
-            test = 'True'
-            console.log(test)
             res.send(output);
         }
         else{
