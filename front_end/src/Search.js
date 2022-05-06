@@ -37,7 +37,6 @@ function Search() {
     }
   });
  
-  const movie = movie_data[index]['title']
 
 
   // when called, updates the currently dispalyed movie
@@ -58,7 +57,7 @@ function Search() {
   return <div className="Search">
     <center>
         <h1 style={{fontSize: "3.7rem"}}>
-          Movies like {movie}...
+          Movies like {movie_data[index]['title']}...
         </h1>     
         <a> <h2> {individualRec} </h2> </a>
         <h3> {indSummary} </h3>
