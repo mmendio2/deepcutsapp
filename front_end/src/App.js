@@ -14,8 +14,8 @@ function App() {
         <div className="App">
             <div className = "content">
               <Routes>
-                <Route path ='/deepcuts' element={<Home/>}/> 
-                <Route path ='/deepcuts/*' element={<Search/>}/> 
+                <Route path ='/deepcutsapp' element={<Home/>}/> 
+                <Route path ='/deepcutsapp/*' element={<Search/>}/> 
               </Routes>
             </div>
         </div>
