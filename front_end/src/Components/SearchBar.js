@@ -49,7 +49,7 @@ function SearchBar({placeholder, data}) {
                 <div className="dataResult" >
                     {filteredData.slice(0, 15).map((value, key) => {
                         return (
-                        <Link className = "dataItem" to = {`/deepcuts/${value.movie_id}`}> 
+                        <Link className = "dataItem" to = {`/deepcutsapp/${value.movie_id}`}> 
                             <p>
                                 {value.title} 
                             </p>
