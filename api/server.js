@@ -60,7 +60,7 @@ app.get('/search/:movie_id', (req, res) => {
             res.send(output);
         }
         else{
-            res.send([['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
+            res.send([['coming soon'], ['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
 
             // db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
             //     emp_arraylength = emp_rows.length
