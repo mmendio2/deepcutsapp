@@ -10,7 +10,7 @@ return(
     <div>
         <img src={logo} className = "photo" alt="Logo" />
         <center>
-            <h1 style={{fontSize: "3.7rem"}}>
+            <h1 style={{fontSize: "3.7rem", fontFamily: "Courier New",  color: "white"}}>
                 Watch a Movie Like...
             </h1>
         </center>

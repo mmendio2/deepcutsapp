@@ -10,7 +10,7 @@ function Search() {
   // defines the use states
   const [movieRecs, setMovieRecs] = useState([]);
   const [individualRec, setIndRecs] = useState("LOADING NOT READY");
-  const [movieNum, setMovieNum] = useState(1);
+  const [movieNum, setMovieNum] = useState(0);
   const [indSummary, setSummary] = useState("");
   const [indRating, setRating] = useState("");
   const [indNumRatings, setNumRatings] = useState("");
@@ -56,18 +56,19 @@ function Search() {
       setIndRecs("Out of movies :/");
     }
     else{
-      setMovieNum(movieNum-1);
-      setIndRecs(movieRecs[movieNum][0]);  
-      setSummary(movieRecs[movieNum][1]);  
-      setRating(movieRecs[movieNum][2]);  
-      setNumRatings(movieRecs[movieNum][3]); 
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum][0].replaceAll(' ', '+')}`).then(json => {
+      setIndRecs(movieRecs[movieNum-1][0]);  
+      setSummary(movieRecs[movieNum-1][1]);  
+      setRating(movieRecs[movieNum-1][2]);  
+      setNumRatings(movieRecs[movieNum-1][3]); 
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum-1][0].replaceAll(' ', '+')}`).then(json => {
             return json[Object.keys(json)[0]]['results']['0']['poster_path']
           }).then(poster => {
             setMoviePosterPath(`https://image.tmdb.org/t/p/w500${poster}`)
           }) 
   
     } 
+    setMovieNum(movieNum -1) 
+
   };
 
 
@@ -77,39 +78,37 @@ function Search() {
       setIndRecs("Out of movies :/");
     }
     else{
-      setMovieNum(movieNum+1);
-      setIndRecs(movieRecs[movieNum][0]);  
-      setSummary(movieRecs[movieNum][1]);  
-      setRating(movieRecs[movieNum][2]);  
-      setNumRatings(movieRecs[movieNum][3]); 
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum][0].replaceAll(' ', '+')}`).then(json => {
+      setIndRecs(movieRecs[movieNum+1][0]);  
+      setSummary(movieRecs[movieNum+1][1]);  
+      setRating(movieRecs[movieNum+1][2]);  
+      setNumRatings(movieRecs[movieNum+1][3]); 
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum+1][0].replaceAll(' ', '+')}`).then(json => {
             return json[Object.keys(json)[0]]['results']['0']['poster_path']
           }).then(poster => {
             setMoviePosterPath(`https://image.tmdb.org/t/p/w500${poster}`)
           }) 
   
-    } 
+    }
+    setMovieNum(movieNum +1) 
   };
 
  // html dispaly, shows the new movie upon button click.
   return <div className="Search">
     <center>
-        <h1 style={{fontSize: "3.7rem"}}>
+        <h1 style={{fontSize: "3.7rem", color: 'white', fontFamily: 'Courier New'}}>
           Movies like {movie_data[index]['title']}...
         </h1>     
         <div class = "parent">
-          <ArrowBackIosIcon class = "arrowLeft" onClick ={updateMovie}></ArrowBackIosIcon>          
+          <ArrowBackIosIcon class = "arrowLeft" style={{ fill: "white" }} onClick ={updateMovieReverse}></ArrowBackIosIcon>          
           <img class = "poster" src= {moviePosterPath}  width="350" height="500"/>
           <h3 class = "summary"> {indSummary} </h3>
           <a class = "title"> <h2> {individualRec} </h2> </a>
           <h3 class = "rating"> {indRating}/5 with {indNumRatings} reviews</h3>
-          <ArrowForwardIosIcon class = "arrowRight" onClick ={updateMovieReverse}></ArrowForwardIosIcon>          
+          <ArrowForwardIosIcon class = "arrowRight" style={{ fill: "white" }} onClick ={updateMovie}></ArrowForwardIosIcon>          
           <div></div>
         </div>  
     </center>
   </div>;
   }
   
-  
   export default Search;
-
