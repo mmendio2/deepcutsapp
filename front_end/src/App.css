@@ -3,7 +3,7 @@
 /* Displays the background for the webpage */
 .App{
     width: 100vw;
-    height: 100vmin;
+    height: 100vmax;
     display: flex;
     align-items: center;
     flex-direction: column;
