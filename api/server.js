@@ -63,7 +63,6 @@ app.get('/search/:movie_id', (req, res) => {
         else{
             // res.send([['coming soon, sorry!'], ['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
             db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
-
                 emp_arraylength = emp_rows.length
                 for (i = 0; i < emp_arraylength; i++){
                     // pushes the movie information to a database

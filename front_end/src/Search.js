@@ -16,7 +16,9 @@ function Search() {
   const [indNumRatings, setNumRatings] = useState("");
   const [moviePosterPath, setMoviePosterPath] = useState("https://ibb.co/0hZXwhp")
 
-  const API = "e9eb1356ad0d34c3167a31807c0ba8f0"
+
+  // THIS SHOULD 10000% be a environmental variable, put it was complicated and so I gave up
+  const API = "" // For github, this is left blank
 
 
   var count = 0
@@ -95,7 +97,7 @@ function Search() {
  // html dispaly, shows the new movie upon button click.
   return <div className="Search">
     <center>
-        <h1 style={{fontSize: "3.7rem", color: 'white', fontFamily: 'Courier New'}}>
+        <h1 style={{fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI'}}>
           Movies like {movie_data[index]['title']}...
         </h1>     
         <div class = "parent">

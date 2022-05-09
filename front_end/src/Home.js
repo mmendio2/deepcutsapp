@@ -10,8 +10,8 @@ return(
     <div>
         <img src={logo} className = "photo" alt="Logo" />
         <center>
-            <h1 style={{fontSize: "3.7rem", fontFamily: "Courier New",  color: "white"}}>
-                Watch a Movie Like v.3....
+            <h1 style={{fontSize: "3.7rem", fontFamily: "Segoe UI",  color: "white"}}>
+                Watch a Movie Like....
             </h1>
         </center>
         <SearchBar placeholder = "Enter a movie!" data ={MovieData}/>
