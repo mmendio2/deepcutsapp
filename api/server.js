@@ -26,33 +26,34 @@ app.get('/search/:movie_id', (req, res) => {
         user: process.env.USER,
         password: process.env.PASSWORD
       });
-    // Query the database--
+    // Query the database, there is two. If the movie is large enough, we hvae it cached in the movie_recs database - so just pull from that
     movie = req.params.movie_id;
     query = `SELECT * from ${DATABASE}.movie_recs where movie_like = '${movie}' order by freq DESC`;
-    emp_query = `SELECT b.movie_id, title, summary, rating, num_ratings, freq
-    FROM
-    (SELECT a.movie_id, freq
-    FROM
-    (SELECT movie_id, count(movie_id) as freq
-    from ${DATABASE}.user_movies 
-    WHERE user in
-    (SELECT user 
-    FROM ${DATABASE}.user_movies
-    WHERE ${DATABASE}.user_movies.movie_id = '${movie}' AND rating >= 4.5)
-    AND  rating >= 4.5 AND movie_id != '${movie}' 
-    GROUP BY movie_id) AS a 
-    WHERE
-    (SELECT COUNT(1) FROM (SELECT genre_name FROM ${DATABASE}.genre_table WHERE ${DATABASE}.genre_table.movie_id = '${movie}' ) as cur
-    LEFT OUTER JOIN (SELECT genre_name FROM ${DATABASE}.genre_table WHERE ${DATABASE}.genre_table.movie_id = a.movie_id ) AS cur2 ON cur.genre_name =cur2.genre_name
-    WHERE cur2.genre_name IS NULL) = 0) as b
-    INNER JOIN ${DATABASE}.movie_table on b.movie_id = movie_table.movie_id
-    ORDER BY freq DESC`
+    // Else use the full query. This query came to me in a dream -- I do not quite fully understand how it works. So please do not change it
+    emp_query = `SELECT movie_id, title, summary, rating, num_ratings, freq, count(*) AS ct FROM
+	(SELECT b.movie_id, title, summary, rating, num_ratings, freq, genre_name
+		FROM
+			(SELECT a.movie_id, freq, genre_name
+				FROM
+					(SELECT movie_id, count(movie_id) as freq
+						FROM ${DATABASE}.user_movies 
+						WHERE user IN
+							(SELECT user 
+								FROM ${DATABASE}.user_movies
+								WHERE ${DATABASE}.user_movies.movie_id = '${movie}' AND rating >= 4.5)
+								AND  rating >= 4.5 AND movie_id != '${movie}' 
+								GROUP BY movie_id) as a
+						LEFT JOIN ${DATABASE}.genre_table on a.movie_id = genre_table.movie_id) AS b
+			INNER JOIN ${DATABASE}.movie_table ON b.movie_id = movie_table.movie_id) AS c
+	RIGHT JOIN (SELECT genre_name FROM ${DATABASE}.genre_table WHERE movie_id = '${movie}') AS d ON  c.genre_name = d.genre_name
+    GROUP BY movie_id
+    ORDER BY ct DESC, freq DESC`
 
     db_con.query(query, function(err, rows, fields)    {
         arraylength = rows.length
         // if it can't get it from the indexed database, it does the slow query from the full database
         output = []
-        console.log("CALL")
+        console.log("test")
         for (i = 0; i < arraylength; i++){
             output.push([rows[i].rec_title, rows[i].rec_summary, rows[i].rec_rating, rows[i].rec_num_ratings, rows[i].rec_id])
         }
@@ -60,16 +61,16 @@ app.get('/search/:movie_id', (req, res) => {
             res.send(output);
         }
         else{
-            res.send([['coming soon'], ['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
+            // res.send([['coming soon, sorry!'], ['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
+            db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
 
-            // db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
-            //     emp_arraylength = emp_rows.length
-            //     for (i = 0; i < emp_arraylength; i++){
-            //         // pushes the movie information to a database
-            //        output.push([emp_rows[i].title, emp_rows[i].summary, emp_rows[i].rating, emp_rows[i].num_ratings])
-            //     }
-            //     res.send(output);
-            // })
+                emp_arraylength = emp_rows.length
+                for (i = 0; i < emp_arraylength; i++){
+                    // pushes the movie information to a database
+                   output.push([emp_rows[i].title, emp_rows[i].summary, emp_rows[i].rating, emp_rows[i].num_ratings])
+                }
+                res.send(output);
+            })
         } 
     })
 })
