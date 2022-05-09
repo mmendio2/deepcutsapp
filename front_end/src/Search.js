@@ -17,8 +17,8 @@ function Search() {
   const [moviePosterPath, setMoviePosterPath] = useState("https://ibb.co/0hZXwhp")
 
 
-  // THIS SHOULD 10000% be a environmental variable, put it was complicated and so I gave up
-  const API = "" // For github, this is left blank
+  // THIS SHOULD 10000% be a environmental variable, but it was complicated and so I gave up, please don't use it for bad things
+  const API = "e9eb1356ad0d34c3167a31807c0ba8f0" 
 
 
   var count = 0
