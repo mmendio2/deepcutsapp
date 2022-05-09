@@ -28,9 +28,10 @@ input:focus {
 
 .dataResult{
     margin-top: 5px;
-    width: 580px;
+    width: 660;
     height: 200px;
     background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
