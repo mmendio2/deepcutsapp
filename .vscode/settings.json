@@ -1,0 +1,12 @@
+{
+    "[javascript]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "editor.formatOnSave": true,
+    "npm.includeDirectories": [
+        "front_end"
+    ],
+    "npm.useRootDirectory": false
+}

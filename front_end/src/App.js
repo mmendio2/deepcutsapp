@@ -1,25 +1,24 @@
-import React from "react";
 import "./App.css";
 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./Home.js";
 import Search from "./Search.js";
-import Home from "./Home.js"
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 // sets the webapge url for home page and redirects after a search
 function App() {
-    return (
-      <Router>
-        <div className="App">
-            <div className = "content">
-              <Routes>
-                <Route path ='/deepcutsapp' element={<Home/>}/> 
-                <Route path ='/deepcutsapp/*' element={<Search/>}/> 
-              </Routes>
-            </div>
+  return (
+    <Router>
+      <div className="App">
+        <div className="content">
+          <Routes>
+            <Route path='/deepcuts' element={<Home />} />
+            <Route path='/deepcuts/*' element={<Search />} />
+          </Routes>
         </div>
-      </Router>
-    
-    )
+      </div>
+    </Router>
+
+  )
 }
 
 

@@ -60,8 +60,8 @@
     "title": "11.22.63"
   },
   {
-    "movie_id": 12,
-    "title": 12
+    "movie_id": "12",
+    "title": "12"
   },
   {
     "movie_id": "12-08-east-of-bucharest",
@@ -92,8 +92,8 @@
     "title": "12th & Delaware"
   },
   {
-    "movie_id": 13,
-    "title": 13
+    "movie_id": "13",
+    "title": "13"
   },
   {
     "movie_id": "13-assassins",
@@ -112,8 +112,8 @@
     "title": "13th"
   },
   {
-    "movie_id": 1408,
-    "title": 1408
+    "movie_id": "1408",
+    "title": "1408"
   },
   {
     "movie_id": "16-shots",
@@ -124,8 +124,8 @@
     "title": "17 Again"
   },
   {
-    "movie_id": 1776,
-    "title": 1776
+    "movie_id": "1776",
+    "title": "1776"
   },
   {
     "movie_id": "18-shaolin-riders",
@@ -136,20 +136,20 @@
     "title": "1898: Our Last Men in the Philippines"
   },
   {
-    "movie_id": 1900,
-    "title": 1900
+    "movie_id": "1900",
+    "title": "1900"
   },
   {
-    "movie_id": 1917,
-    "title": 1917
+    "movie_id": "1917",
+    "title": "1917"
   },
   {
     "movie_id": "1922-2017",
-    "title": 1922
+    "title": "1922"
   },
   {
-    "movie_id": 1941,
-    "title": 1941
+    "movie_id": "1941",
+    "title": "1941"
   },
   {
     "movie_id": "1987-when-the-day-comes",
@@ -189,11 +189,11 @@
   },
   {
     "movie_id": "2010-1984",
-    "title": 2010
+    "title": "2010"
   },
   {
-    "movie_id": 2012,
-    "title": 2012
+    "movie_id": "2012",
+    "title": "2012"
   },
   {
     "movie_id": "2012-doomsday",
@@ -208,12 +208,12 @@
     "title": "2020 Texas Gladiators"
   },
   {
-    "movie_id": 2046,
-    "title": 2046
+    "movie_id": "2046",
+    "title": "2046"
   },
   {
     "movie_id": "2067-2020",
-    "title": 2067
+    "title": "2067"
   },
   {
     "movie_id": "20th-century-women",
@@ -236,8 +236,8 @@
     "title": "22 Jump Street"
   },
   {
-    "movie_id": 23,
-    "title": 23
+    "movie_id": "23",
+    "title": "23"
   },
   {
     "movie_id": "24-hour-party-people",
@@ -320,20 +320,20 @@
     "title": "30 Years of Garbage: The Garbage Pail Kids Story"
   },
   {
-    "movie_id": 300,
-    "title": 300
+    "movie_id": "300",
+    "title": "300"
   },
   {
-    "movie_id": 3022,
-    "title": 3022
+    "movie_id": "3022",
+    "title": "3022"
   },
   {
     "movie_id": "303-2018",
-    "title": 303
+    "title": "303"
   },
   {
     "movie_id": "31-2016",
-    "title": 31
+    "title": "31"
   },
   {
     "movie_id": "310-to-yuma",
@@ -352,8 +352,8 @@
     "title": "36 Hours"
   },
   {
-    "movie_id": 360,
-    "title": 360
+    "movie_id": "360",
+    "title": "360"
   },
   {
     "movie_id": "365-days-2020",
@@ -388,12 +388,12 @@
     "title": "400 Days"
   },
   {
-    "movie_id": 42,
-    "title": 42
+    "movie_id": "42",
+    "title": "42"
   },
   {
     "movie_id": "42-2009",
-    "title": 42
+    "title": "42"
   },
   {
     "movie_id": "42-one-dream-rush",
@@ -473,7 +473,7 @@
   },
   {
     "movie_id": "555-1988",
-    "title": 555
+    "title": "555"
   },
   {
     "movie_id": "6-days",
@@ -524,7 +524,7 @@
     "title": "7 Plus Seven"
   },
   {
-    "movie_id": 71,
+    "movie_id": "71",
     "title": "'71"
   },
   {
@@ -536,8 +536,8 @@
     "title": "711 Ocean Drive"
   },
   {
-    "movie_id": 7500,
-    "title": 7500
+    "movie_id": "7500",
+    "title": "7500"
   },
   {
     "movie_id": "78-52",
@@ -549,7 +549,7 @@
   },
   {
     "movie_id": "8-2008",
-    "title": 8
+    "title": "8"
   },
   {
     "movie_id": "8-ball-bunny",
@@ -592,12 +592,12 @@
     "title": "8MM"
   },
   {
-    "movie_id": 9,
-    "title": 9
+    "movie_id": "9",
+    "title": "9"
   },
   {
     "movie_id": "9-2005",
-    "title": 9
+    "title": "9"
   },
   {
     "movie_id": "9-deaths-of-the-ninja-1985",
@@ -605,7 +605,7 @@
   },
   {
     "movie_id": "96-2018",
-    "title": 96
+    "title": "96"
   },
   {
     "movie_id": "964-pinocchio",
