@@ -11,7 +11,7 @@ function Home() {
 
   function handleSearch(movieTitle) {
     const match = movies.find(movie => movie.title === movieTitle);
-    navigate(`/deepcuts/${match.movie_id}`);
+    navigate(`/deepcutsapp/${match.movie_id}`);
   }
 
   return (
