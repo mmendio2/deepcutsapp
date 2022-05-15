@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express')
 const mysql = require('mysql2');
-require("dotenv").config({ override: true });
+require("dotenv").config();
 
 
 
