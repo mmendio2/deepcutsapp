@@ -2,6 +2,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import { getURL } from './env';
 import movies from './movie_titles.json';
 
 // import "./Search.css";
@@ -22,7 +23,7 @@ function Search() {
 
   useEffect(() => {
     // gets the information the server sends
-    axios.get(`https://deepcuts-apps.herokuapp.com/search/${val}`).then(response => {
+    axios.get(`${getURL()}/search/${val}`).then(response => {
       console.log(response);
       setMovieRecs(response.data);
       setIndRecs(response.data[0][0])

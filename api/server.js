@@ -1,10 +1,11 @@
+'use strict';
 const express = require('express')
-var mysql = require('mysql2');
-require("dotenv").config();
+const mysql = require('mysql2');
+require("dotenv").config({ override: true });
 
 
 
-DATABASE = process.env.DB;
+const DATABASE = process.env.DB;
 
 const app = express()
 //cors - THIS IS DEFINITELY NOT SAFE BUT IT WORKS *********MAYBE FIX**********
@@ -21,16 +22,16 @@ app.get('/', (req, res) => {
 // Route for querying
 app.get('/search/:movie_id', (req, res) => {
     // Connection to database, uses CLEARDB login
-    var db_con = mysql.createPool({
+    const db_con = mysql.createPool({
         host: process.env.HOST,
         user: process.env.USER,
         password: process.env.PASSWORD
-      });
+    });
     // Query the database, there is two. If the movie is large enough, we hvae it cached in the movie_recs database - so just pull from that
-    movie = req.params.movie_id;
-    query = `SELECT * from ${DATABASE}.movie_recs where movie_like = '${movie}' order by freq DESC`;
+    const movie = req.params.movie_id;
+    const query = `SELECT * from ${DATABASE}.movie_recs where movie_like = '${movie}' order by freq DESC`;
     // Else use the full query. This query came to me in a dream -- I do not quite fully understand how it works. So please do not change it
-    emp_query = `SELECT movie_id, title, summary, rating, num_ratings, freq, count(*) AS ct FROM
+    const emp_query = `SELECT movie_id, title, summary, rating, num_ratings, freq, count(*) AS ct FROM
 	(SELECT b.movie_id, title, summary, rating, num_ratings, freq, genre_name
 		FROM
 			(SELECT a.movie_id, freq, genre_name
@@ -49,30 +50,33 @@ app.get('/search/:movie_id', (req, res) => {
     GROUP BY movie_id
     ORDER BY ct DESC, freq DESC`
 
-    db_con.query(query, function(err, rows, fields)    {
-        arraylength = rows.length
+    db_con.query(query, function (err, rows, fields) {
+        if (err) {
+            throw err;
+        }
+
+        const arraylength = rows.length
         // if it can't get it from the indexed database, it does the slow query from the full database
-        output = []
-        console.log("test")
-        for (i = 0; i < arraylength; i++){
+        const output = []
+        for (let i = 0; i < arraylength; i++) {
             output.push([rows[i].rec_title, rows[i].rec_summary, rows[i].rec_rating, rows[i].rec_num_ratings, rows[i].rec_id])
         }
-        if (arraylength != 0){
+        if (arraylength != 0) {
             res.send(output);
         }
-        else{
+        else {
             // res.send([['coming soon, sorry!'], ['coming soon'], ['coming soon'], ['coming soon'], ['coming soon']])
-            db_con.query(emp_query, function(emp_err, emp_rows, emp_fields)    {
-                emp_arraylength = emp_rows.length
-                for (i = 0; i < emp_arraylength; i++){
+            db_con.query(emp_query, function (emp_err, emp_rows, emp_fields) {
+                const emp_arraylength = emp_rows.length
+                for (let i = 0; i < emp_arraylength; i++) {
                     // pushes the movie information to a database
-                   output.push([emp_rows[i].title, emp_rows[i].summary, emp_rows[i].rating, emp_rows[i].num_ratings])
+                    output.push([emp_rows[i].title, emp_rows[i].summary, emp_rows[i].rating, emp_rows[i].num_ratings])
                 }
                 res.send(output);
             })
-        } 
+        }
     })
 })
 
-app.listen(process.env.PORT || 3001)    
+app.listen(process.env.PORT || 3001)
 
