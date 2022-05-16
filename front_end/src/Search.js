@@ -1,5 +1,9 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { getURL } from './env';
@@ -87,22 +91,34 @@ function Search() {
   };
 
   // html dispaly, shows the new movie upon button click.
-  return <div className="Search">
-    <center>
-      <h1 style={{ fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI' }}>
-        Movies like {movies[index]['title']}...
-      </h1>
-      <div className="parent">
-        <ArrowBackIosIcon className="arrowLeft" style={{ fill: "white" }} onClick={updateMovieReverse}></ArrowBackIosIcon>
-        <img className="poster" alt="movie poster" src={moviePosterPath} width="350" height="500" />
-        <h3 className="summary"> {indSummary} </h3>
-        <h2 className="title"> {individualRec} </h2>
-        <h3 className="rating"> {indRating}/5 with {indNumRatings} reviews</h3>
-        <ArrowForwardIosIcon className="arrowRight" style={{ fill: "white" }} onClick={updateMovie}></ArrowForwardIosIcon>
-        <div></div>
-      </div>
-    </center>
-  </div>;
+  return (
+    <Grid container style={{ minHeight: "100vh" }}>
+      <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <h1 style={{ fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI' }}>
+          Movies like {movies[index]['title']}...
+        </h1>
+      </Grid>
+      <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Stack
+          alignItems="center"
+          justifyContent="center"
+          direction="row"
+          spacing={2}
+        >
+          <IconButton aria-label="Clear search field" onClick={updateMovieReverse} style={{ color: "white" }}>
+            <ArrowBackIosIcon />
+          </IconButton>
+          <img className="poster" alt="movie poster" src={moviePosterPath} width="350" height="500" />
+          <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indSummary}</Typography>
+          <Typography className='title' variant="header2" style={{ fontFamily: "Segoe UI", color: "white" }}>{individualRec}</Typography>
+          <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indRating}/5 ({indNumRatings} Reviews)</Typography>
+          <IconButton aria-label="Clear search field" onClick={updateMovie} style={{ color: "white" }}>
+            <ArrowForwardIosIcon />
+          </IconButton>
+        </Stack >
+      </Grid>
+    </Grid>
+  );
 }
 
 export default Search;

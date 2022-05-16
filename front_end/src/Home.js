@@ -1,3 +1,5 @@
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./Components/SearchBar";
 import logo from "./DeepCuts_Logo.png";
@@ -15,15 +17,15 @@ function Home() {
   }
 
   return (
-    <div>
-      <img src={logo} className="photo" alt="Logo" />
-      <center>
-        <h1 style={{ fontSize: "3.7rem", fontFamily: "Segoe UI", color: "white" }}>
-          Watch a Movie Like....
-        </h1>
-      </center>
-      <SearchBar label="movie-search-bar" placeholder="Enter a movie!" data={[...new Set(movies.map(movie => movie.title))]} onSearch={handleSearch} />
-    </div>
+    <Grid container style={{ minHeight: "100vh" }}>
+      <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <img src={logo} className="photo" alt="Logo" />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography className='title' variant="header2" style={{ fontSize: "3.7rem", fontFamily: "Segoe UI", color: "white" }}>Watch a Movie Like....</Typography>
+        <SearchBar label="movie-search-bar" placeholder="Enter a movie!" data={[...new Set(movies.map(movie => movie.title))]} onSearch={handleSearch} />
+      </Grid>
+    </Grid >
   )
 }
 

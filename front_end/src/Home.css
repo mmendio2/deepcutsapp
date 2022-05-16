@@ -1,8 +1,4 @@
 /* sets location of logo on webpage */
 .photo {
-  height: 290px;
-  width: 250px;
-  margin-top: 50px;
-  margin-left: 34%;
-  padding-bottom: 50px;
+  height: 40vh;
 }
