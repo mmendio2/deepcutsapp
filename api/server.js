@@ -15,12 +15,12 @@ app.use(cors({
 }));
 
 // Home route, doesn't do anything
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
     res.send("No movies here presently....")
 });
 
 // Route for querying
-app.get('/search/:movie_id', (req, res) => {
+app.get('/search/:movie_id', (req, res, next) => {
     // Connection to database, uses CLEARDB login
     const db_con = mysql.createPool({
         host: process.env.HOST,
