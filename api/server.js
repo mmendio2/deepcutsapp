@@ -15,7 +15,7 @@ app.use(cors({
 }));
 
 // Home route, doesn't do anything
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
     res.send("No movies here presently....")
 });
 
