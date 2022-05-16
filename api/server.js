@@ -55,6 +55,7 @@ app.get('/search/:movie_id', (req, res, next) => {
             return next(err);
         }
 
+
         const arraylength = rows.length
         // if it can't get it from the indexed database, it does the slow query from the full database
         const output = []
@@ -80,8 +81,8 @@ app.get('/search/:movie_id', (req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-    console.error({ error: err, request: req }, err.stack);
-    res.status(500).send('Something broke!')
+    console.error(JSON.stringify({ error: err, request: req }), err.stack);
+    res.status(500).send('Something broke!');
 });
 
 app.listen(process.env.PORT || 3001);
