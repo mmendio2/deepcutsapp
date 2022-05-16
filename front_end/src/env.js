@@ -6,7 +6,7 @@
  */
 export function getURL() {
     if (process.env.NODE_ENV === "production" || process.env.REACT_APP_USE_PRODUCTION_API === "true") {
-        return "https://deepcutsapp-apps.herokuapp.com";
+        return "https://deepcuts-apps.herokuapp.com";
     }
     else {
         return "http://localhost:3001"
