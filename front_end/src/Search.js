@@ -92,22 +92,6 @@ function Search() {
 
   // html dispaly, shows the new movie upon button click.
   return (
-    // <div className="Search">
-    //   <center>
-    //     <h1 style={{ fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI' }}>
-    //       Movies like {movies[index]['title']}...
-    //     </h1>
-    //     <div className="parent">
-    //       <ArrowBackIosIcon className="arrowLeft" style={{ fill: "white" }} onClick={updateMovieReverse}></ArrowBackIosIcon>
-    //       <img className="poster" alt="movie poster" src={moviePosterPath} width="350" height="500" />
-    //       <h3 className="summary"> {indSummary} </h3>
-    //       <h2 className="title"> {individualRec} </h2>
-    //       <h3 className="rating"> {indRating}/5 with {indNumRatings} reviews</h3>
-    //       <ArrowForwardIosIcon className="arrowRight" style={{ fill: "white" }} onClick={updateMovie}></ArrowForwardIosIcon>
-    //       <div></div>
-    //     </div>
-    //   </center>
-    // </div>
     <Grid container style={{ minHeight: "100vh" }}>
       <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <h1 style={{ fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI' }}>
