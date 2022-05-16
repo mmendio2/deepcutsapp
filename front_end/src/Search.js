@@ -92,13 +92,13 @@ function Search() {
 
   // html dispaly, shows the new movie upon button click.
   return (
-    <Grid container style={{ minHeight: "100vh" }}>
+    <Grid container style={{ minHeight: "100vh", paddingBottom: "10vh" }}>
       <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <h1 style={{ fontSize: "3.7rem", color: 'white', fontFamily: 'Segoe UI' }}>
           Movies like {movies[index]['title']}...
         </h1>
       </Grid>
-      <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Grid item xs={12} style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
         <Stack
           alignItems="center"
           justifyContent="center"
@@ -110,9 +110,9 @@ function Search() {
           </IconButton>
           <img className="poster" alt="movie poster" src={moviePosterPath} width="350" height="500" />
           <Stack spacing={2}>
-            <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indSummary}</Typography>
-            <Typography className='title' variant="header2" style={{ fontFamily: "Segoe UI", color: "white" }}>{individualRec}</Typography>
-            <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indRating}/5 ({indNumRatings} Reviews)</Typography>
+            <h1 style={{ fontSize: "3.0rem", color: 'white', fontFamily: 'Segoe UI' }}>{individualRec}</h1>
+            <Typography className='title' variant="header3" style={{ fontSize: "2.0rem", fontFamily: "Segoe UI", color: "white" }}>{indRating}/5 ({indNumRatings} Reviews)</Typography>
+            <Typography className='title' variant="header3" style={{ fontSize: "1.2rem", fontFamily: "Segoe UI", color: "white" }}>{indSummary}</Typography>
           </Stack>
           <IconButton aria-label="Clear search field" onClick={updateMovie} style={{ color: "white" }}>
             <ArrowForwardIosIcon />
