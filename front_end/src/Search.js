@@ -32,7 +32,7 @@ function Search() {
       setMovieRecs(response.data);
       setIndRecs(response.data[0][0])
       setSummary(response.data[0][1]);
-      setRating(response.data[0][2]);
+      setRating(response.data[0][2].toFixed(1));
       setNumRatings(response.data[0][3]);
       return response.data[0][0].replaceAll(' ', '+');
     }).then(result => {
@@ -56,7 +56,7 @@ function Search() {
     else {
       setIndRecs(movieRecs[movieNum - 1][0]);
       setSummary(movieRecs[movieNum - 1][1]);
-      setRating(movieRecs[movieNum - 1][2]);
+      setRating(movieRecs[movieNum - 1][2].toFixed(1));
       setNumRatings(movieRecs[movieNum - 1][3]);
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum - 1][0].replaceAll(' ', '+')}`).then(json => {
         return json[Object.keys(json)[0]]['results']['0']['poster_path']
@@ -78,7 +78,7 @@ function Search() {
     else {
       setIndRecs(movieRecs[movieNum + 1][0]);
       setSummary(movieRecs[movieNum + 1][1]);
-      setRating(movieRecs[movieNum + 1][2]);
+      setRating(movieRecs[movieNum + 1][2].toFixed(1));
       setNumRatings(movieRecs[movieNum + 1][3]);
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${movieRecs[movieNum + 1][0].replaceAll(' ', '+')}`).then(json => {
         return json[Object.keys(json)[0]]['results']['0']['poster_path']
@@ -109,9 +109,11 @@ function Search() {
             <ArrowBackIosIcon />
           </IconButton>
           <img className="poster" alt="movie poster" src={moviePosterPath} width="350" height="500" />
-          <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indSummary}</Typography>
-          <Typography className='title' variant="header2" style={{ fontFamily: "Segoe UI", color: "white" }}>{individualRec}</Typography>
-          <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indRating}/5 ({indNumRatings} Reviews)</Typography>
+          <Stack spacing={2}>
+            <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indSummary}</Typography>
+            <Typography className='title' variant="header2" style={{ fontFamily: "Segoe UI", color: "white" }}>{individualRec}</Typography>
+            <Typography className='title' variant="header3" style={{ fontFamily: "Segoe UI", color: "white" }}>{indRating}/5 ({indNumRatings} Reviews)</Typography>
+          </Stack>
           <IconButton aria-label="Clear search field" onClick={updateMovie} style={{ color: "white" }}>
             <ArrowForwardIosIcon />
           </IconButton>

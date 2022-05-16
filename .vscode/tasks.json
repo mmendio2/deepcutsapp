@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "command": "npm",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "start",
+            "problemMatcher": [],
+            "label": "Start React",
+            "detail": "Use local backend"
+        },
+        {
+            "type": "shell",
+            "problemMatcher": [],
+            "label": "Start React",
+            "detail": "Use remote backend",
+            "options": {
+                "cwd": "${workspaceFolder}/front_end",
+                "env": {
+                    "REACT_APP_USE_PRODUCTION_API": "true"
+                }
+            },
+            "args": [
+                "run",
+                "start"
+            ]
+        },
+        {
+            "type": "shell",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "Frontend Deployment Build",
+            "detail": "Build and deploy application",
+            "options": {
+                "cwd": "${workspaceFolder}/front_end"
+            },
+            "args": [
+                "run",
+                "deploy"
+            ]
+        }
+    ]
+}
