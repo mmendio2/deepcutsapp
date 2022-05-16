@@ -7,25 +7,17 @@ require("dotenv").config();
 
 const DATABASE = process.env.DB;
 
-const app = express()
+const app = express();
 //cors - THIS IS DEFINITELY NOT SAFE BUT IT WORKS *********MAYBE FIX**********
 const cors = require('cors');
 app.use(cors({
     origin: '*'
 }));
 
-function errorHandler(err, req, res, next) {
-    console.log({ error: err, request: req, response: res, next: next });
-    res.status(500);
-    res.render('error', { error: err });
-}
-// error handler
-app.use(errorHandler);
-
 // Home route, doesn't do anything
 app.get('/', (req, res) => {
     res.send("No movies here presently....")
-})
+});
 
 // Route for querying
 app.get('/search/:movie_id', (req, res) => {
@@ -84,7 +76,14 @@ app.get('/search/:movie_id', (req, res) => {
             })
         }
     })
-})
+});
 
-app.listen(process.env.PORT || 3001)
+// error handler
+app.use((err, req, res, next) => {
+    console.log({ error: err, request: req, response: res, next: next });
+    console.error(err.stack);
+    res.status(500).send('Something broke!')
+});
+
+app.listen(process.env.PORT || 3001);
 
