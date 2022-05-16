@@ -42,7 +42,7 @@ function Search() {
         setMoviePosterPath(`https://image.tmdb.org/t/p/w500${poster}`)
       })
     })
-  });
+  }, []);
 
   // sets the info based on responses
   var val = window.location.href.split('/').slice(-1)[0]
