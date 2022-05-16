@@ -14,6 +14,14 @@ app.use(cors({
     origin: '*'
 }));
 
+function errorHandler(err, req, res, next) {
+    console.log({ error: err, request: req, response: res, next: next });
+    res.status(500);
+    res.render('error', { error: err });
+}
+// error handler
+app.use(errorHandler);
+
 // Home route, doesn't do anything
 app.get('/', (req, res) => {
     res.send("No movies here presently....")
