@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
 /* Displays the background for the webpage */
-.App{
-    width: 100vw;
-    height: 125vh;
+.App {
     display: flex;
     align-items: center;
     flex-direction: column;
