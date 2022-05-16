@@ -52,7 +52,7 @@ app.get('/search/:movie_id', (req, res) => {
 
     db_con.query(query, function (err, rows, fields) {
         if (err) {
-            throw new Error('DB Error: ' + JSON.stringify(err));
+            next(err);
         }
 
         const arraylength = rows.length
@@ -80,8 +80,7 @@ app.get('/search/:movie_id', (req, res) => {
 
 // error handler
 app.use((err, req, res, next) => {
-    console.log({ error: err, request: req, response: res, next: next });
-    console.error(err.stack);
+    console.error({ error: err, request: req }, err.stack);
     res.status(500).send('Something broke!')
 });
 
