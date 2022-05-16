@@ -52,7 +52,7 @@ app.get('/search/:movie_id', (req, res, next) => {
 
     db_con.query(query, function (err, rows, fields) {
         if (err) {
-            next(err);
+            return next(err);
         }
 
         const arraylength = rows.length
