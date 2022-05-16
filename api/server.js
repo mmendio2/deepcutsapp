@@ -81,7 +81,7 @@ app.get('/search/:movie_id', (req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-    console.error(JSON.stringify({ error: err, request: req }), err.stack);
+    console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
